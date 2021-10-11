@@ -1,82 +1,88 @@
 import {
-  Badge,
-  chakra,
-  Code,
+  Button,
+  Flex,
   Heading,
+  Image,
+  Stack,
+  Text,
+  useBreakpointValue,
   List,
   ListItem,
-  OrderedList,
-  Tag,
-  Text,
-} from '@chakra-ui/react'
-import React from 'react'
-import { Layout } from '../components/Layout'
-import { Link } from 'react-router-dom'
+} from "@chakra-ui/react";
+import React from "react";
+import { Layout } from "../components/Layout";
+import { Link } from "react-router-dom";
 
 export default function Homepage() {
   return (
     <Layout>
-      <Heading>Home page</Heading>
-      <Text my={6}></Text>
-
-      <Heading>
-        Firebase Authentication
-        <chakra.span
-          fontWeight='black'
-          fontStyle='italic'
-          fontSize='9xl'
-          mx={2}
-        >
-          v9
-        </chakra.span>
-        <Badge
-          fontWeight='black'
-          fontSize='4xl'
-          mx={2}
-          px={2}
-          colorScheme='green'
-        >
-          NEW API
-        </Badge>
-      </Heading>
-      <OrderedList fontSize='3xl' my={4}>
-        <ListItem>Email password authentication (Register/Login)</ListItem>
-        <ListItem>Google Sign in</ListItem>
-        <ListItem>Forgot Password</ListItem>
-        <ListItem>Custom Reset password page</ListItem>
-        <ListItem>Protected routes</ListItem>
-        <ListItem>
-          <Code fontSize='inherit'> Redirect TO</Code> or Back (keeping the
-          state)
-        </ListItem>
-        <ListItem>
-          custom Auth Hook <Code fontSize='3xl'>useAuth()</Code>
-        </ListItem>
-        <ListItem>Loading indicators while sign-in/up</ListItem>
-        <ListItem>
-          Dark Mode enabled template using
-          <Badge
-            fontSize='inherit'
-            colorScheme='teal'
-            mx={2}
-            textTransform='capitalize'
-            borderRadius='md'
-          >
-            Chakra UI
-          </Badge>
-        </ListItem>
-      </OrderedList>
-      <Heading size='md' mt={20}>
+      <>
+        <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
+          <Flex p={8} flex={1} align={"center"} justify={"center"}>
+            <Stack spacing={6} w={"full"} maxW={"lg"}>
+              <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+                <Text
+                  as={"span"}
+                  position={"relative"}
+                  _after={{
+                    content: "''",
+                    width: "full",
+                    height: useBreakpointValue({ base: "20%", md: "30%" }),
+                    position: "absolute",
+                    bottom: 1,
+                    left: 0,
+                    bg: "blue.400",
+                    zIndex: -1,
+                  }}
+                >
+                  Freelance
+                </Text>
+                <br />{" "}
+                <Text color={"blue.400"} as={"span"}>
+                  Design Projects
+                </Text>{" "}
+              </Heading>
+              <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
+                The project board is an exclusive resource for contract work.
+                It's perfect for freelancers, agencies, and moonlighters.
+              </Text>
+              <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+                <Button
+                  rounded={"full"}
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                >
+                  Create Project
+                </Button>
+                <Button rounded={"full"}>How It Works</Button>
+              </Stack>
+            </Stack>
+          </Flex>
+          <Flex flex={1}>
+            <Image
+              alt={"Login Image"}
+              objectFit={"cover"}
+              src={
+                "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              }
+            />
+          </Flex>
+        </Stack>
+      </>
+      <Heading size="md" mt={20}>
         Some other links (only for reference):
       </Heading>
       <List>
         <ListItem>
-          <Link to='/reset-password'>reset page</Link>
+          <Link to="/reset-password">reset page</Link>
         </ListItem>
         <ListItem>
-          <Link to='/forgot-password'>forgot page</Link>
+          <Link to="/forgot-password">forgot page</Link>
         </ListItem>
       </List>
     </Layout>
-  )
+  );
 }
