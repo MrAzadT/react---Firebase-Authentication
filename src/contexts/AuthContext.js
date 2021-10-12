@@ -8,6 +8,7 @@ export const useAuth = () => useContext(AuthContext);
 
 export default function AuthContextProvider({ children }) {
   const { currentUser, SetCurrentUser } = useState(null);
+  console.log(currentUser);
   const value = {
     currentUser,
   };

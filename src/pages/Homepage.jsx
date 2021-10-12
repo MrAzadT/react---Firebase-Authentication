@@ -12,10 +12,14 @@ import {
 import React from "react";
 import { Layout } from "../components/Layout";
 import { Link } from "react-router-dom";
+import { useAuth } from "./../contexts/AuthContext";
 
 export default function Homepage() {
+  const { currentUser } = useAuth();
   return (
     <Layout>
+      <Text my={6}>{`Current user : ${currentUser}`}</Text>
+
       <>
         <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
           <Flex p={8} flex={1} align={"center"} justify={"center"}>
